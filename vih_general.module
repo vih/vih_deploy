@@ -16,3 +16,43 @@ function vih_general_preprocess_node(&$variables) {
       '!datetime' => strtolower(format_date($variables['created'], 'custom', 'l, j. F Y')),
     ));
 }
+
+/**
+ * Implements hook_form_alter().
+ */
+function vih_general_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'mailchimp_lists_user_subscribe_form_nyhedsbrev') {
+    // Google Analytics event
+    $form['#attached'] = array(
+      'js' => array(
+        '(function($){
+          $("#mailchimp-lists-user-subscribe-form-nyhedsbrev").submit(function(e){
+            if (typeof _gaq !== "undefined") {
+              // Category  - Action - Event
+              _gaq.push(["_trackEvent", "Newsletter", "Subscribe", "DK"]);
+            }
+          })
+        })(jQuery);' => array('type' => 'inline')
+      )
+    );
+    $form['actions']['submit']['#value'] = 'Tilmeld';
+  }
+  elseif ($form_id == 'mailchimp_lists_user_subscribe_form_newsletter') {
+    // Google Analytics event
+    $form['#attached'] = array(
+      'js' => array(
+        '(function($){
+          $("#mailchimp_lists_user_subscribe_form_newsletter").submit(function(e){
+            if (typeof _gaq !== "undefined") {
+              // Category  - Action - Event
+              _gaq.push(["_trackEvent", "Newsletter", "Subscribe", "UK"]);
+            }
+          })
+        })(jQuery);' => array('type' => 'inline')
+      )
+    );
+    $form['actions']['submit']['#value'] = 'Subscribe';
+  }
+ 
+  return $form;
+}

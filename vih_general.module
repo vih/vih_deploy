@@ -57,3 +57,16 @@ function vih_general_form_alter(&$form, &$form_state, $form_id) {
   }
   return $form;
 }
+
+/**
+ * Implements hook_update_projects_alter().
+ */
+function vih_general_update_projects_alter(&$projects) {
+  // We wish to remove our custom modules from any drupal.org updates.
+  foreach($projects as $key => $project) {
+    // Most custom module match this naming convention.
+    if (preg_match('/^vih_.*$/', $key)) {
+      unset($projects[$key]);
+    }
+  }
+}

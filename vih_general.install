@@ -1,0 +1,11 @@
+<?php
+/**
+ * @file
+ */
+
+/**
+ * Disable Fixed Field which is not used anymore
+ */
+function vih_general_update_7000() {
+  module_disable(array('fixed_field'));
+}

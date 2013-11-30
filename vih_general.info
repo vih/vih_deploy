@@ -4,5 +4,4 @@ name = "VIH Custom"
 package = "VIH"
 project = "vih_general"
 version = "7.x-0.3"
-dependencies[] = panopoly_admin
 

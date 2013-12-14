@@ -1,7 +1,0 @@
-core = "7.x"
-description = "Custom utility functions for VIH"
-name = "VIH Custom"
-package = "VIH"
-project = "vih_general"
-version = "7.x-0.3"
-

@@ -30,3 +30,12 @@ function vih_deploy_update_7000() {
 function vih_deploy_update_7001() {
   module_disable(array('vih_general'));
 }
+
+/**
+ * Fixes an issue where the vih.dk site has come into a broke state that gives
+ * a fatal error on admin/commerce.
+ */
+function vih_deploy_update_7002() {
+  db_query("DELETE FROM {menu_links} WHERE link_path = 'admin/commerce';");
+  drupal_flush_all_caches();
+}

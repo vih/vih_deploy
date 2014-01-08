@@ -1,59 +1,5 @@
 <?php
 /**
  * @file
- * Some general methods used for VIH
  */
 
-/**
- * Implements hook_form_alter().
- */
-function vih_general_form_alter(&$form, &$form_state, $form_id) {
-  if ($form_id == 'mailchimp_lists_user_subscribe_form_nyhedsbrev') {
-    if (module_exists('google_analytics')) {
-      $form['#attached'] = array(
-        'js' => array(
-          '(function($){
-            $("#mailchimp-lists-user-subscribe-form-nyhedsbrev").submit(function(e){
-              if (typeof _gaq !== "undefined") {
-                // Category  - Action - Event
-                _gaq.push(["_trackEvent", "Newsletter", "Subscribe", "DK"]);
-              }
-            })
-          })(jQuery);' => array('type' => 'inline')
-        )
-      );
-    }
-    $form['actions']['submit']['#value'] = 'Tilmeld';
-  }
-  elseif ($form_id == 'mailchimp_lists_user_subscribe_form_newsletter') {
-    if (module_exists('google_analytics')) {
-      $form['#attached'] = array(
-        'js' => array(
-          '(function($){
-            $("#mailchimp_lists_user_subscribe_form_newsletter").submit(function(e){
-              if (typeof _gaq !== "undefined") {
-                // Category  - Action - Event
-                _gaq.push(["_trackEvent", "Newsletter", "Subscribe", "UK"]);
-              }
-            })
-          })(jQuery);' => array('type' => 'inline')
-        )
-      );
-    }
-    $form['actions']['submit']['#value'] = 'Subscribe';
-  }
-  return $form;
-}
-
-/**
- * Implements hook_update_projects_alter().
- */
-function vih_general_update_projects_alter(&$projects) {
-  // We wish to remove our custom modules from any drupal.org updates.
-  foreach($projects as $key => $project) {
-    // Most custom module match this naming convention.
-    if (preg_match('/^vih_.*$/', $key)) {
-      unset($projects[$key]);
-    }
-  }
-}

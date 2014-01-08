@@ -10,7 +10,7 @@
  */
 function vih_deploy_install() {
   for ($i = 7001; $i < 8000; $i++) {
-    $candidate = 'example_deploy_update_' . $i;
+    $candidate = 'vih_deploy_update_' . $i;
     if (function_exists($candidate)) {
       $candidate();
     }

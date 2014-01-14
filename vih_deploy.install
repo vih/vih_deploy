@@ -46,3 +46,11 @@ function vih_deploy_update_7002() {
 function vih_deploy_update_7003() {
   module_enable(array('vih_general'));
 }
+
+/**
+ * Should really be disabled.
+ */
+function vih_deploy_update_7004() {
+  module_disable(array('vih_general'));
+  drupal_uninstall_modules(array('vih_general'));
+}

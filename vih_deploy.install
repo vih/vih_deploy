@@ -54,3 +54,10 @@ function vih_deploy_update_7004() {
   module_disable(array('vih_general'));
   drupal_uninstall_modules(array('vih_general'));
 }
+
+/**
+ * Enable adminrole for consistent admininistrator.
+ */
+function vih_deploy_update_7005() {
+  module_disable(array('adminrole'));
+}

@@ -61,3 +61,11 @@ function vih_deploy_update_7004() {
 function vih_deploy_update_7005() {
   module_disable(array('adminrole'));
 }
+
+/**
+ * Setting upload to 5MB and skip scheme on upload.
+ */
+function vih_deploy_update_7006() {
+  variable_set('file_entity_max_filesize', '5 MB');
+  variable_set('file_entity_file_upload_wizard_skip_scheme', 1);
+}

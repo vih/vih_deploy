@@ -63,9 +63,18 @@ function vih_deploy_update_7005() {
 }
 
 /**
- * Setting upload to 5MB and skip scheme on upload.
+ * Setting up timezones.
  */
 function vih_deploy_update_7006() {
+  variable_set('configurable_timezones', 0);
+  variable_set('date_first_day', 1);
+  variable_set('date_default_timezone', 'Europe/Copenhagen');
+}
+
+/**
+ * Setting upload to 5MB and skip scheme on upload.
+ */
+function vih_deploy_update_7007() {
   variable_set('file_entity_max_filesize', '5 MB');
   variable_set('file_entity_file_upload_wizard_skip_scheme', 1);
 }

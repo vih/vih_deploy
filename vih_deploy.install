@@ -78,3 +78,15 @@ function vih_deploy_update_7007() {
   variable_set('file_entity_max_filesize', '5 MB');
   variable_set('file_entity_file_upload_wizard_skip_scheme', 1);
 }
+
+/**
+ * Settings for transliteration.
+ */
+function vih_deploy_update_7008() {
+  if (module_exists('pathauto')) {
+    if (module_exists('transliteration)) {
+      variable_set('pathauto_transliterate', 1);
+    }
+    variable_set('pathauto_reduce_ascii', 1);
+  }
+}

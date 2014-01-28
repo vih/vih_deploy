@@ -61,3 +61,12 @@ function vih_deploy_update_7004() {
 function vih_deploy_update_7005() {
   module_disable(array('adminrole'));
 }
+
+/**
+ * Setting up timezones.
+ */
+function vih_deploy_update_7006() {
+  variable_set('configurable_timezones', 0);
+  variable_set('date_first_day', 1);
+  variable_set('date_default_timezone', 'Europe/Copenhagen');
+}

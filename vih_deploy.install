@@ -84,7 +84,7 @@ function vih_deploy_update_7007() {
  */
 function vih_deploy_update_7008() {
   if (module_exists('pathauto')) {
-    if (module_exists('transliteration)) {
+    if (module_exists('transliteration')) {
       variable_set('pathauto_transliterate', 1);
     }
     variable_set('pathauto_reduce_ascii', 1);

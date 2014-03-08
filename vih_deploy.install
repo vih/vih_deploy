@@ -59,7 +59,7 @@ function vih_deploy_update_7004() {
  * Enable adminrole for consistent admininistrator.
  */
 function vih_deploy_update_7005() {
-  module_disable(array('adminrole'));
+  module_enable(array('adminrole'));
 }
 
 /**
@@ -89,4 +89,18 @@ function vih_deploy_update_7008() {
     }
     variable_set('pathauto_reduce_ascii', 1);
   }
+}
+
+/**
+ * Enabling panopoly pages and panopoly news.
+ */
+function vih_deploy_update_7009() {
+  $panopoly_pages = 'panopoly_pages';
+  module_enable(array($panopoly_pages, 'panopoly_news'));
+  $feature = features_get_features($panopoly_pages);
+  $components = array_keys($feature->info['features']);
+  features_revert(array($panopoly_pages => $components));
+  features_revert(array('panopoly_core' => array('taxonomy', 'variable', 'views_view')));
+  features_revert(array('panopoly_users' => array('fieldgroup')));
+  features_revert(array('panopoly_widgets' => array('file_entity', 'views_view')));
 }

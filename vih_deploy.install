@@ -100,3 +100,10 @@ function vih_deploy_update_7009() {
   features_revert(array('panopoly_widgets' => array('file_entity', 'views_view')));
   module_enable(array('panopoly_pages'));
 }
+
+/**
+ * Enable VIH Images.
+ */
+function vih_deploy_update_7010() {
+  module_enable(array('vih_images'));
+}

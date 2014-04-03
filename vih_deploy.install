@@ -107,3 +107,11 @@ function vih_deploy_update_7009() {
 function vih_deploy_update_7010() {
   module_enable(array('vih_images'));
 }
+
+/**
+ * Set theme to ember and media dialog theme to seven
+ */
+function vih_deploy_7011() {
+  variable_set('media_dialog_theme', 'seven');
+  variable_set('admin_theme', 'ember');
+}

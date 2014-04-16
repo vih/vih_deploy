@@ -115,3 +115,10 @@ function vih_deploy_7011() {
   variable_set('media_dialog_theme', 'seven');
   variable_set('admin_theme', 'ember');
 }
+
+/**
+ * Enable VIH Commerce
+ */
+function vih_deploy_7012() {
+  module_enable(array('vih_commerce'));
+}

@@ -122,3 +122,11 @@ function vih_deploy_7011() {
 function vih_deploy_7012() {
   module_enable(array('vih_commerce'));
 }
+
+/**
+ * Disable Focus Crop and Smart crop
+ */
+function vih_deploy_7013() {
+  module_enable(array('imagefield_focus', 'smartcrop'));
+  drupal_uninstall_modules(array('imagefield_focus', 'smartcrop'));
+}

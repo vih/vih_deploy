@@ -9,7 +9,7 @@
  * See http://dcycleproject.org/node/43
  */
 function vih_deploy_install() {
-  for ($i = 7001; $i < 8000; $i++) {
+  for ($i = 7000; $i < 8000; $i++) {
     $candidate = 'vih_deploy_update_' . $i;
     if (function_exists($candidate)) {
       $candidate();
@@ -111,7 +111,7 @@ function vih_deploy_update_7010() {
 /**
  * Set theme to ember and media dialog theme to seven
  */
-function vih_deploy_7011() {
+function vih_deploy_update_7011() {
   variable_set('media_dialog_theme', 'seven');
   variable_set('admin_theme', 'ember');
 }
@@ -119,14 +119,21 @@ function vih_deploy_7011() {
 /**
  * Enable VIH Commerce
  */
-function vih_deploy_7012() {
+function vih_deploy_update_7012() {
   module_enable(array('vih_commerce'));
 }
 
 /**
  * Disable Focus Crop and Smart crop
  */
-function vih_deploy_7013() {
-  module_enable(array('imagefield_focus', 'smartcrop'));
+function vih_deploy_update_7013() {
+  module_disable(array('imagefield_focus', 'smartcrop'));
   drupal_uninstall_modules(array('imagefield_focus', 'smartcrop'));
+}
+
+/**
+ * Set frontpage to frontpage landing page
+ */
+function vih_deploy_update_7014() {
+  variable_set('site_frontpage', 'frontpage');
 }

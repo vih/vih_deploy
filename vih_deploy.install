@@ -18,6 +18,25 @@ function vih_deploy_install() {
 }
 
 /**
+ * Implements hook_update_dependencies().
+ */
+function vih_deploy_update_dependencies() {
+  $deps = array();
+  $deps['vih_deploy'][7015] = array(
+    'vih_short_course' => 7000,
+    'vih_short_course_commerce' => 7000,
+    'vih_short_course_kayak' => 7000,
+    'vih_short_course_sport' => 7000,
+    'vih_short_course_family' => 7000,
+    'vih_golf_courses' => 7000,
+    'vih_employees' => 7000,
+    'vih_subjects' => 7000,
+    'vih_facilities' => 7000,
+  );
+  return $deps;
+}
+
+/**
  * Disable Fixed Field which is not used anymore
  */
 function vih_deploy_update_7000() {
@@ -136,4 +155,26 @@ function vih_deploy_update_7013() {
  */
 function vih_deploy_update_7014() {
   variable_set('site_frontpage', 'frontpage');
+}
+
+/**
+ * Revert features after upgrading to featured_image
+ */
+function vih_deploy_update_7015() {
+  module_enable('vih_short_course_sport');
+  features_revert(array('vih_short_course' => array('info', 'field_instance')));
+  features_revert(array('vih_short_course_commerce' => array('info', 'field_instance', 'commerce_line_item_type')));
+  features_revert(array('vih_short_course_kayak' => array('field_instance', 'commerce_line_item_type')));
+  features_revert(array('vih_short_course_family' => array('field_instance', 'commerce_line_item_type')));
+  features_revert(array('vih_short_course_sport' => array('info', 'variable', 'commerce_line_item_type')));
+  features_revert(array('vih_golf_courses' => array('field_base', 'field_instance', 'views_view', 'commerce_line_item_type')));
+  features_revert(array('vih_employees' => array('field_instance', 'page_manager_handlers', 'variable')));
+  features_revert(array('vih_subjects' => array('info', 'field_instance', 'views_view')));
+  features_revert(array('vih_facilities' => array('variable')));
+  features_revert(array('vih_images' => array('image')));
+  features_revert(array('vih_participant_quotes' => array('info', 'views_view')));
+  features_revert(array('vih_student_quotes' => array('info', 'views_view')));
+  features_revert(array('vih_stories' => array('info', 'variable')));
+  features_revert(array('vih_lectures' => array('info', 'commerce_line_item_type')));
+  features_revert(array('vih_commerce' => array('info', 'field_instance')));
 }

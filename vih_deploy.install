@@ -161,7 +161,6 @@ function vih_deploy_update_7014() {
  * Revert features after upgrading to featured_image
  */
 function vih_deploy_update_7015() {
-  module_enable('vih_short_course_sport');
   features_revert(array('vih_short_course' => array('info', 'field_instance')));
   features_revert(array('vih_short_course_commerce' => array('info', 'field_instance', 'commerce_line_item_type')));
   features_revert(array('vih_short_course_kayak' => array('field_instance', 'commerce_line_item_type')));

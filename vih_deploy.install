@@ -162,11 +162,11 @@ function vih_deploy_update_7014() {
  */
 function vih_deploy_update_7015() {
   features_revert(array('vih_short_course' => array('info', 'field_instance')));
-  features_revert(array('vih_short_course_commerce' => array('info', 'field_instance', 'commerce_line_item_type')));
-  features_revert(array('vih_short_course_kayak' => array('field_instance', 'commerce_line_item_type')));
-  features_revert(array('vih_short_course_family' => array('field_instance', 'commerce_line_item_type')));
-  features_revert(array('vih_short_course_sport' => array('info', 'variable', 'commerce_line_item_type')));
-  features_revert(array('vih_golf_courses' => array('field_base', 'field_instance', 'views_view', 'commerce_line_item_type')));
+  features_revert(array('vih_short_course_commerce' => array('info', 'field_instance')));
+  features_revert(array('vih_short_course_kayak' => array('field_instance')));
+  features_revert(array('vih_short_course_family' => array('field_instance')));
+  features_revert(array('vih_short_course_sport' => array('info', 'variable')));
+  features_revert(array('vih_golf_courses' => array('field_base', 'field_instance', 'views_view')));
   features_revert(array('vih_employees' => array('field_instance', 'page_manager_handlers', 'variable')));
   features_revert(array('vih_subjects' => array('info', 'field_instance', 'views_view')));
   features_revert(array('vih_facilities' => array('variable')));
@@ -174,6 +174,6 @@ function vih_deploy_update_7015() {
   features_revert(array('vih_participant_quotes' => array('info', 'views_view')));
   features_revert(array('vih_student_quotes' => array('info', 'views_view')));
   features_revert(array('vih_stories' => array('info', 'variable')));
-  features_revert(array('vih_lectures' => array('info', 'commerce_line_item_type')));
+  features_revert(array('vih_lectures' => array('info')));
   features_revert(array('vih_commerce' => array('info', 'field_instance')));
 }

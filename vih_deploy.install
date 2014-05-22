@@ -162,6 +162,7 @@ function vih_deploy_update_7014() {
  */
 function vih_deploy_update_7015() {
   features_include(TRUE);
+  features_revert(array('vih_commerce' => array('info', 'field_instance')));
   features_revert(array('vih_short_course' => array('info', 'field_instance')));
   features_revert(array('vih_short_course_commerce' => array('info', 'field_instance')));
   features_revert(array('vih_short_course_kayak' => array('field_instance')));
@@ -176,5 +177,4 @@ function vih_deploy_update_7015() {
   features_revert(array('vih_student_quotes' => array('info', 'views_view')));
   features_revert(array('vih_stories' => array('info', 'variable')));
   features_revert(array('vih_lectures' => array('info')));
-  features_revert(array('vih_commerce' => array('info', 'field_instance')));
 }

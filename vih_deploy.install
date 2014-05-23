@@ -161,12 +161,15 @@ function vih_deploy_update_7014() {
  * Revert features after upgrading to featured_image
  */
 function vih_deploy_update_7015() {
+  // Flush feature include static cache since this could run on update runs
+  // or also install.
+  //
+  // Is there a way to check if Drupal is installing and exit function?
   features_include(TRUE);
+
   features_revert(array('vih_commerce' => array('info', 'field_instance')));
   features_revert(array('vih_short_course' => array('info', 'field_instance')));
   features_revert(array('vih_short_course_commerce' => array('info', 'field_instance')));
-  features_revert(array('vih_short_course_kayak' => array('field_instance')));
-  features_revert(array('vih_short_course_family' => array('field_instance')));
   features_revert(array('vih_short_course_sport' => array('info', 'variable')));
   features_revert(array('vih_golf_courses' => array('field_base', 'field_instance', 'views_view')));
   features_revert(array('vih_employees' => array('field_instance', 'page_manager_handlers', 'variable')));
@@ -177,4 +180,13 @@ function vih_deploy_update_7015() {
   features_revert(array('vih_student_quotes' => array('info', 'views_view')));
   features_revert(array('vih_stories' => array('info', 'variable')));
   features_revert(array('vih_lectures' => array('info')));
+
+  // Something about the feature export and hook_install() is causing errors.
+  // These run after drush_core_site_install(). There may be collisions occurring.
+  //
+  // Based on debugging it appears that all dependencies are met. These are
+  // commented out for now to test build on Travis.
+
+  // features_revert(array('vih_short_course_kayak' => array('field_instance')));
+  // features_revert(array('vih_short_course_family' => array('field_instance')));
 }

@@ -2,4 +2,13 @@
 /**
  * @file
  */
-
+ 
+/**
+ * Implements hook_field_default_field_bases_alter().
+ * Fix: https://drupal.org/comment/8555451#comment-8555451
+ */
+function vih_deploy_field_default_field_bases_alter(&$field_bases) {
+  if (!empty($field_bases['body'])) {
+    $field_bases['body']['translatable'] = 1;
+  }
+}

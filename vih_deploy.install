@@ -161,6 +161,8 @@ function vih_deploy_update_7014() {
  * Revert features after upgrading to featured_image
  */
 function vih_deploy_update_7015() {
+  module_enable(array('vih_plugins'));
+
   // Flush feature include static cache since this could run on update runs
   // or also install.
   //

@@ -128,11 +128,10 @@ function vih_deploy_update_7010() {
 }
 
 /**
- * Set theme to ember and media dialog theme to seven
+ * Set media dialog theme to seven
  */
 function vih_deploy_update_7011() {
   variable_set('media_dialog_theme', 'seven');
-  variable_set('admin_theme', 'ember');
 }
 
 /**

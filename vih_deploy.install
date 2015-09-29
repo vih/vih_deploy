@@ -191,3 +191,10 @@ function vih_deploy_update_7015() {
   // features_revert(array('vih_short_course_kayak' => array('field_instance')));
   // features_revert(array('vih_short_course_family' => array('field_instance')));
 }
+
+/**
+ * Enable VIH Footer.
+ */
+function vih_deploy_update_7016() {
+  module_enable(array('vih_footer'));
+}

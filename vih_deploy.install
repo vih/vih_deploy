@@ -198,3 +198,15 @@ function vih_deploy_update_7015() {
 function vih_deploy_update_7016() {
   module_enable(array('vih_footer'));
 }
+
+/**
+ * Disable deprecated filters
+ */
+function vih_deploy_update_7017() {
+  $text_formats = array('full_html', 'filtered_html');
+  foreach ($text_formats as $format_name) {
+    $format = filter_format_load($format_name);
+    filter_format_disable($format);
+    drupal_set_message(t('Disabled text format %format.', array('%format' => $format->name)));
+  }
+}

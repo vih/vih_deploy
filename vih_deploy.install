@@ -210,3 +210,16 @@ function vih_deploy_update_7017() {
     drupal_set_message(t('Disabled text format %format.', array('%format' => $format->name)));
   }
 }
+
+/**
+ * Fix content with busted text format from 7017.
+ */
+function vih_deploy_update_7018() {
+  db_update('field_data_body')
+    ->fields(array(
+      'body_format' => 'panopoly_wysiwyg_text',
+    ))
+    ->condition('body_format', array('full_html', 'filtered_html'))
+    ->execute();
+
+}

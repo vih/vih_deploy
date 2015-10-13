@@ -221,5 +221,24 @@ function vih_deploy_update_7018() {
     ))
     ->condition('body_format', array('full_html', 'filtered_html'))
     ->execute();
+}
 
+/**
+ * Fix other fields with busted text formats.
+ */
+function vih_deploy_update_7019() {
+  $map = field_info_field_map();
+  foreach ($map as $field_name => $field_data) {
+    if (in_array($field_data['type'], array('text', 'text_long', 'text_with_summary'))) {
+      $query = db_update('field_data_' . $field_name)
+        ->fields(array(
+          $field_name . '_format' => 'panopoly_wysiwyg_text',
+        ))
+        ->condition($field_name . '_format', array('full_html', 'filtered_html'))
+        ->execute();
+      drupal_set_message(t('Updated @field_name for number of entries: @count', array(
+        '@field_name' => $field_name,
+        '@count' => $query)), 'status');
+    }
+  }
 }

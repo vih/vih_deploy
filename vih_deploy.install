@@ -251,5 +251,7 @@ function vih_deploy_update_7020() {
   
   // Settings necessary for webform to work properly.
   variable_set('mimemail_format', 'panopoly_wysiwyg_text');
+  variable_set('webform_email_html_capable', '1');
+  variable_set('webform_format_override', '1');
 }
 

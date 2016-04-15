@@ -50,7 +50,6 @@ dependencies[] = vih_brochure
 dependencies[] = vih_calendar
 dependencies[] = vih_core
 dependencies[] = vih_dashboard
-dependencies[] = vih_deploy
 dependencies[] = vih_employees
 dependencies[] = vih_facilities
 dependencies[] = vih_footer

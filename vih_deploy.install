@@ -37,10 +37,10 @@ function vih_deploy_update_dependencies() {
 }
 
 /**
- * Disable Fixed Field which is not used anymore
+ * Enable VIH Landing Page for development.
  */
 function vih_deploy_update_7000() {
-  module_disable(array('fixed_field'));
+  module_disable(array('vih_landing_pages'));
 }
 
 /**
